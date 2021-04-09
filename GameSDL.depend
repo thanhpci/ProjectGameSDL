@@ -1,0 +1,23 @@
+# depslib dependency file v1.0
+1617898020 source:d:\codeblocks\gamesdl\main.cpp
+	<iostream>
+	"CommonFunc.h"
+	"BaseObject.h"
+
+1617708078 source:d:\codeblocks\gamesdl\commonfunc.cpp
+	"CommonFunc.h"
+
+1617897609 d:\codeblocks\gamesdl\commonfunc.h
+	<windows.h>
+	<string>
+	<SDL.h>
+	<SDL_image.h>
+	<SDL_mixer.h>
+	<SDL_ttf.h>
+
+1617855877 source:d:\codeblocks\gamesdl\baseobject.cpp
+	"BaseObject.h"
+
+1617897609 d:\codeblocks\gamesdl\baseobject.h
+	"CommonFunc.h"
+
