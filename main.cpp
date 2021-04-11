@@ -1,7 +1,7 @@
 #include <iostream>
 #include "CommonFunc.h"
 #include "BaseObject.h"
-
+#include "game_map.h"
 
 using namespace std;
 
@@ -15,7 +15,11 @@ bool InitData()
 
     SDL_SetHint(SDL_HINT_RENDER_SCALE_QUALITY, "1");
 
-    g_window = SDL_CreateWindow("Game Brave Soldier", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, SCREEN_WIDTH, SCREEN_HEIGHT, SDL_WINDOW_SHOWN);
+    g_window = SDL_CreateWindow("Game Brave Soldier",
+                                SDL_WINDOWPOS_UNDEFINED,
+                                SDL_WINDOWPOS_UNDEFINED,
+                                SCREEN_WIDTH, SCREEN_HEIGHT,
+                                SDL_WINDOW_SHOWN);
 
     if (g_window == NULL) sucess = false;
     else {
@@ -61,6 +65,11 @@ int main(int argc, char* argv[])
 
     if(LoadBackground() == false) return -1;
 
+    GameMap game_map;
+    game_map.LoadMap("map/map01.dat");
+    game_map.LoadTiles(g_screen);
+
+
     bool is_quit = false;
 
 
@@ -72,12 +81,16 @@ int main(int argc, char* argv[])
             {
                 is_quit = true;
             }
-
-
         }
+
         SDL_SetRenderDrawColor(g_screen, RENDER_DRAW_COLOR, RENDER_DRAW_COLOR, RENDER_DRAW_COLOR, RENDER_DRAW_COLOR);
+
         SDL_RenderClear(g_screen);
+
         g_background.Render(g_screen, NULL);
+
+        game_map.DrawMap(g_screen);
+
         SDL_RenderPresent(g_screen);
     }
 

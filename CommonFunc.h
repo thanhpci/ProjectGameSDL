@@ -28,8 +28,64 @@ const int RENDER_DRAW_COLOR = 0XFF;
 
 
 
+#define TILE_SIZE 64
+#define MAX_MAP_X 400 // cột
+#define MAX_MAP_Y 10  // dòng
+
+typedef struct Map
+{
+    int start_x_;   //vị trí của ô
+    int start_y_;
+
+    int max_x_;     //chỉ số của ô (STT)
+    int max_y_;
+
+    int tile[MAX_MAP_Y][MAX_MAP_X];
+    char* file_name_;
+
+
+};
 
 
 
 
 #endif // COMMON_FUNCTION_H_
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
