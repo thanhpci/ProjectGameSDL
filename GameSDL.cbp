@@ -35,6 +35,8 @@
 		<Unit filename="BaseObject.h" />
 		<Unit filename="CommonFunc.cpp" />
 		<Unit filename="CommonFunc.h" />
+		<Unit filename="MainObject.cpp" />
+		<Unit filename="MainObject.h" />
 		<Unit filename="game_map.cpp" />
 		<Unit filename="game_map.h" />
 		<Unit filename="main.cpp" />

@@ -2,6 +2,8 @@
 #include "CommonFunc.h"
 #include "BaseObject.h"
 #include "game_map.h"
+#include "MainObject.h"
+
 
 using namespace std;
 
@@ -43,7 +45,6 @@ bool LoadBackground()
     return true;
 }
 
-
 void close()
 {
     g_background.Free();
@@ -69,6 +70,11 @@ int main(int argc, char* argv[])
     game_map.LoadMap("map/map01.dat");
     game_map.LoadTiles(g_screen);
 
+    MainObject p_player;
+    p_player.loadImg("img//player_right.png", g_screen);
+    p_player.set_clips();
+
+
 
     bool is_quit = false;
 
@@ -81,6 +87,8 @@ int main(int argc, char* argv[])
             {
                 is_quit = true;
             }
+
+                p_player.HandelInputAction(g_envent, g_screen);
         }
 
         SDL_SetRenderDrawColor(g_screen, RENDER_DRAW_COLOR, RENDER_DRAW_COLOR, RENDER_DRAW_COLOR, RENDER_DRAW_COLOR);
@@ -90,6 +98,8 @@ int main(int argc, char* argv[])
         g_background.Render(g_screen, NULL);
 
         game_map.DrawMap(g_screen);
+
+        p_player.Show(g_screen);
 
         SDL_RenderPresent(g_screen);
     }
