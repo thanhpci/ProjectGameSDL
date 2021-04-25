@@ -27,7 +27,7 @@ const int COLOR_KEY_B = 180;
 const int RENDER_DRAW_COLOR = 0XFF;
 
 
-
+#define BLANK_TILE 0
 #define TILE_SIZE 64
 #define MAX_MAP_X 400 // cột
 #define MAX_MAP_Y 10  // dòng

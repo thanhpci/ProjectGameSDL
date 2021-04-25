@@ -99,6 +99,11 @@ int main(int argc, char* argv[])
 
         game_map.DrawMap(g_screen);
 
+        Map map_data = game_map.getMap();
+
+
+        p_player.DoPlayer(map_data);
+
         p_player.Show(g_screen);
 
         SDL_RenderPresent(g_screen);

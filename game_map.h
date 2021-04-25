@@ -21,7 +21,7 @@ public:
     void LoadMap(char* name);
     void LoadTiles(SDL_Renderer* screen);
     void DrawMap(SDL_Renderer* screen);
-
+    Map getMap() const {return game_map_;};
 
 private:
     Map game_map_;
