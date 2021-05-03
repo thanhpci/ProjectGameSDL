@@ -1,15 +1,16 @@
 # depslib dependency file v1.0
-1619349178 source:d:\codeblocks\gamesdl\main.cpp
+1619976604 source:d:\codeblocks\gamesdl\main.cpp
 	<iostream>
 	"CommonFunc.h"
 	"BaseObject.h"
 	"game_map.h"
 	"MainObject.h"
+	"ImpTimer.h"
 
 1617708078 source:d:\codeblocks\gamesdl\commonfunc.cpp
 	"CommonFunc.h"
 
-1619066490 d:\codeblocks\gamesdl\commonfunc.h
+1620013222 d:\codeblocks\gamesdl\commonfunc.h
 	<windows.h>
 	<string>
 	<SDL.h>
@@ -17,7 +18,7 @@
 	<SDL_mixer.h>
 	<SDL_ttf.h>
 
-1617855877 source:d:\codeblocks\gamesdl\baseobject.cpp
+1619800615 source:d:\codeblocks\gamesdl\baseobject.cpp
 	"BaseObject.h"
 
 1618503952 d:\codeblocks\gamesdl\baseobject.h
@@ -26,14 +27,29 @@
 1618142144 source:d:\codeblocks\gamesdl\game_map.cpp
 	"game_map.h"
 
-1619349082 d:\codeblocks\gamesdl\game_map.h
+1619537056 d:\codeblocks\gamesdl\game_map.h
 	"CommonFunc.h"
 	"BaseObject.h"
 
-1619284999 d:\codeblocks\gamesdl\mainobject.h
+1620013222 d:\codeblocks\gamesdl\mainobject.h
+	<vector>
 	"CommonFunc.h"
 	"BaseObject.h"
+	"BulletObject.h"
 
-1619349082 source:d:\codeblocks\gamesdl\mainobject.cpp
+1620010373 source:d:\codeblocks\gamesdl\mainobject.cpp
 	"MainObject.h"
+
+1619599774 source:d:\codeblocks\gamesdl\imptimer.cpp
+	"ImpTimer.h"
+	"CommonFunc.h"
+
+1619599732 d:\codeblocks\gamesdl\imptimer.h
+
+1620009760 source:d:\codeblocks\gamesdl\bulletobject.cpp
+	"BulletObject.h"
+
+1620009760 d:\codeblocks\gamesdl\bulletobject.h
+	"BaseObject.h"
+	"CommonFunc.h"
 

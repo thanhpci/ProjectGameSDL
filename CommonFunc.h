@@ -15,6 +15,8 @@ static SDL_Event g_envent;
 
 
 //Screen
+
+const int FRAME_PER_SECOND = 40;    //fps
 const int SCREEN_WIDTH = 1280;
 const int SCREEN_HEIGHT = 640;
 const int SCREEN_BPP = 32;      //pixel
@@ -31,6 +33,8 @@ const int RENDER_DRAW_COLOR = 0XFF;
 #define TILE_SIZE 64
 #define MAX_MAP_X 400 // cột
 #define MAX_MAP_Y 10  // dòng
+
+#define STATE_MONEY 4
 
 typedef struct Input
 {
