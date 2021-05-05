@@ -174,7 +174,8 @@ void MainObject::HandelInputAction(SDL_Event events, SDL_Renderer* screen)
         else if (events.button.button == SDL_BUTTON_LEFT)
         {
             BulletObject* p_bullet = new BulletObject();
-            p_bullet->loadImg("img//player_bullet.png", screen);
+            p_bullet->set_bullet_type(BulletObject::LASER_BULLET);
+            p_bullet->loadImgBullet(screen);
 
             if (status_ == WALK_LEFT)
             {
@@ -344,13 +345,13 @@ void MainObject::CheckToMap(Map& map_data)
 
         else if (x_val_ < 0)
         {
-            int val1 = map_data.tile[y1][x2];
-            int val2 = map_data.tile[y2][x2];
+            int val1 = map_data.tile[y1][x1];
+            int val2 = map_data.tile[y2][x1];
 
             if (val1 == STATE_MONEY || val2 == STATE_MONEY)
             {
-                map_data.tile[y1][x2] = 0;
-                map_data.tile[y2][x2] = 0;
+                map_data.tile[y1][x1] = 0;
+                map_data.tile[y2][x1] = 0;
                 IncreaseMoney();
             }
             else
@@ -420,14 +421,14 @@ void MainObject::CheckToMap(Map& map_data)
             }
             else
             {
-
+                if (val1 != BLANK_TILE || val2 != BLANK_TILE)
+                {
+                    y_pos_ = (y1+1)*TILE_SIZE;
+                    y_val_ = 0;
+                }
             }
 
-            if (val1 != BLANK_TILE || val2 != BLANK_TILE)
-            {
-                y_pos_ = (y1+1)*TILE_SIZE;
-                y_val_ = 0;
-            }
+
         }
     }
 
