@@ -11,6 +11,10 @@ ThreatsObject::ThreatsObject()
     on_ground_ = 0;
     come_back_time_ = 0;
     frame_ = 0;
+    animation_a_ = 0;
+    animation_b_ = 0;
+    input_type_.left_ = 0;
+    type_move_ = STATIC_THREAT;
 
 }
 
@@ -28,6 +32,17 @@ bool ThreatsObject::loadImg(std::string path, SDL_Renderer* screen)
         height_frame_ = rect_.h;
     }
     return ret;
+}
+
+SDL_Rect ThreatsObject::GetRectFrame()
+{
+    SDL_Rect rect;
+    rect.x = rect_.x;
+    rect.y = rect_.y;
+    rect.w = width_frame_;
+    rect.h = height_frame_;
+
+    return rect;
 }
 
 void ThreatsObject::set_clips()
@@ -105,6 +120,15 @@ void ThreatsObject::DoPlayer(Map& gMap)
             y_val_ = THREAT_MAX_FALL_SPEED;
         }
 
+        if (input_type_.left_ == 1)
+        {
+            x_val_ -= THREAT_SPEED;
+        }
+        else if (input_type_.right_ == 1)
+        {
+            x_val_ += THREAT_SPEED;
+        }
+
         CheckToMap(gMap);
     }
 
@@ -113,23 +137,49 @@ void ThreatsObject::DoPlayer(Map& gMap)
         come_back_time_--;
         if (come_back_time_ == 0)
         {
-            x_val_ = 0;
-            y_val_ = 0;
-            if (x_pos_ > 256)
-            {
-                x_pos_ -= 256;
-
-            }
-            else
-            {
-                x_pos_ = 0;
-            }
-
-            y_pos_ = 0;
-            come_back_time_ = 0;
+            InitThreats();
         }
     }
 
+
+}
+
+
+void ThreatsObject::InitThreats()
+{
+        x_val_ = 0;
+        y_val_ = 0;
+        if (x_pos_ > 256)
+        {
+            x_pos_ -= 256;
+            animation_a_ -= 256;
+            animation_b_ -= 256;
+
+        }
+        else
+        {
+            x_pos_ = 0;
+        }
+
+        y_pos_ = 0;
+        come_back_time_ = 0;
+        input_type_.left_ = 1;
+}
+
+
+void ThreatsObject::RemoveBullet(const int& idx)
+{
+    int size = bullet_list_.size();
+    if (size > 0 && idx < size)
+    {
+        BulletObject* p_bullet = bullet_list_.at(idx);
+        bullet_list_.erase(bullet_list_.begin() + idx);
+        if (p_bullet)
+        {
+            delete p_bullet;
+            p_bullet = NULL;
+        }
+    }
 
 }
 
@@ -241,6 +291,111 @@ void ThreatsObject::CheckToMap(Map& map_data)
         come_back_time_ = 60;
     }
 }
+
+
+
+void ThreatsObject::ImpMoveType(SDL_Renderer* screen)
+{
+    if (type_move_ == STATIC_THREAT)
+    {
+
+    }
+    else
+    {
+        if (on_ground_ == true)
+        {
+            if (x_pos_ > animation_b_)
+            {
+                input_type_.left_ = 1;
+                input_type_.right_ = 0;
+                loadImg("img//threat_left.png", screen);
+            }
+            else if (x_pos_ < animation_a_)
+            {
+                input_type_.left_ = 0;
+                input_type_.right_ = 1;
+                loadImg("img//threat_right.png", screen);
+            }
+        }
+        else
+        {
+            if (input_type_.left_ == 1)
+            {
+                loadImg("img//threat_left.png", screen);
+            }
+        }
+    }
+}
+
+void ThreatsObject::InitBullet(BulletObject* p_bullet, SDL_Renderer* screen)
+{
+    if (p_bullet != NULL)
+    {
+        p_bullet->set_bullet_type(BulletObject::LASER_BULLET);
+        bool ret = p_bullet->loadImgBullet(screen);
+
+        if (ret)
+        {
+            p_bullet->set_is_move(true);
+            p_bullet->set_bullet_dir(BulletObject::DIR_LEFT);
+            p_bullet->SetRect(x_pos_ + 5, rect_.y + 10);
+            p_bullet->set_x_val(15);
+            bullet_list_.push_back(p_bullet);
+        }
+
+    }
+}
+
+void ThreatsObject::MakeBullet(SDL_Renderer* screen, const int& x_limit, const int& y_limit)
+{
+    for (int i = 0; i < bullet_list_.size(); i++)
+    {
+        BulletObject* p_bullet = bullet_list_.at(i);
+        if (p_bullet != NULL)
+        {
+            if (p_bullet->get_is_move())
+            {
+                int bullet_distance = rect_.x + width_frame_ - p_bullet->GetRect().x;
+                if (bullet_distance < 350 && bullet_distance >0)
+                {
+                    p_bullet->HandleMove(x_limit, y_limit);
+                    p_bullet->Render(screen);
+                }
+                else
+                {
+                    p_bullet->set_is_move(false);
+                }
+
+            }
+            else
+            {
+                p_bullet->set_is_move(true);
+                p_bullet->SetRect(rect_.x + 3, rect_.y + 10);
+            }
+        }
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

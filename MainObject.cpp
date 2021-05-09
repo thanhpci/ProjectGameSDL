@@ -47,6 +47,17 @@ bool MainObject::loadImg(std::string path, SDL_Renderer* screen)
 
 }
 
+SDL_Rect MainObject::GetRectFrame()
+{
+    SDL_Rect rect;
+    rect.x = rect_.x;
+    rect.y = rect_.y;
+    rect.w = width_frame_;
+    rect.h = height_frame_;
+
+    return rect;
+
+}
 
 void MainObject::set_clips()
 {
@@ -174,18 +185,18 @@ void MainObject::HandelInputAction(SDL_Event events, SDL_Renderer* screen)
         else if (events.button.button == SDL_BUTTON_LEFT)
         {
             BulletObject* p_bullet = new BulletObject();
-            p_bullet->set_bullet_type(BulletObject::LASER_BULLET);
+            p_bullet->set_bullet_type(BulletObject::LASER_BULLET_BLUE);
             p_bullet->loadImgBullet(screen);
 
             if (status_ == WALK_LEFT)
             {
                 p_bullet->set_bullet_dir(BulletObject::DIR_LEFT);
-                p_bullet->SetRect(this->rect_.x, rect_.y + height_frame_*0.25);
+                p_bullet->SetRect(this->rect_.x, rect_.y + height_frame_*0.3);
             }
             else
             {
                 p_bullet->set_bullet_dir(BulletObject::DIR_RIGHT);
-                p_bullet->SetRect(this->rect_.x + width_frame_- 20, rect_.y + height_frame_*0.25);
+                p_bullet->SetRect(this->rect_.x + width_frame_- 20, rect_.y + height_frame_*0.3);
 
             }
 
@@ -219,6 +230,22 @@ void MainObject::HandleBullet(SDL_Renderer* des)
                     p_bullet = NULL;
                 }
             }
+        }
+    }
+
+}
+
+void MainObject::RemoveBullet(const int& idx)
+{
+    int size = p_bullet_list_.size();
+    if (size > 0 && idx < size)
+    {
+        BulletObject* p_bullet = p_bullet_list_.at(idx);
+        p_bullet_list_.erase(p_bullet_list_.begin() + idx);
+        if (p_bullet)
+        {
+            delete p_bullet;
+            p_bullet = NULL;
         }
     }
 

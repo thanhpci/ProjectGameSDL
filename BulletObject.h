@@ -28,6 +28,7 @@ public:
     {
         SPHERE_BULLET = 50,
         LASER_BULLET = 51,
+        LASER_BULLET_BLUE = 52,
     };
 
     void set_x_val(const int& xVal) {x_val_ = xVal;}
@@ -47,7 +48,7 @@ public:
 
     void HandleMove(const int& x_border, const int& y_border);
 
-    void loadImgBullet(SDL_Renderer* des);
+    bool loadImgBullet(SDL_Renderer* des);
 
 
 private:

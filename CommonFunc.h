@@ -4,7 +4,7 @@
 #include <windows.h>
 #include <string>
 #include <vector>
-
+#include <stdio.h>
 #include <SDL.h>
 #include <SDL_image.h>
 #include <SDL_mixer.h>
@@ -61,7 +61,10 @@ typedef struct Map
 
 };
 
-
+namespace SDLCommonFunc
+{
+    bool CheckCollision(const SDL_Rect& object1, const SDL_Rect& object2);
+}
 
 
 #endif // COMMON_FUNCTION_H_

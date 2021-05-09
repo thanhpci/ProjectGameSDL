@@ -13,17 +13,24 @@ BulletObject::~BulletObject()
 
 }
 
-void BulletObject::loadImgBullet(SDL_Renderer* des)
+bool BulletObject::loadImgBullet(SDL_Renderer* des)
 {
+    bool ret = false;
     if (bullet_type_ == LASER_BULLET)
     {
-        loadImg("img//laser_bullet.png", des);
+        ret = loadImg("img//laser_bullet.png", des);
+
+    }
+    else if (bullet_type_ == LASER_BULLET_BLUE)
+    {
+        ret = loadImg("img//laser_bullet_blue.png", des);
 
     }
     else
     {
-        loadImg("img//sphere_bullet.png", des);
+        ret = loadImg("img//sphere_bullet.png", des);
     }
+    return ret;
 }
 
 void BulletObject::HandleMove(const int& x_border, const int& y_border)
