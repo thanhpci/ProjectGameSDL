@@ -1,1 +1,1 @@
-# ProjectGameSDL
+Đây là một tựa game phưu lưu. Bạn hãy tiêu diệt những con quái vật canh giữ và đem về những đồng tiền vàng. Khi thu thập đủ 30 đồng tiền bạn sẽ thắng cuộc!
