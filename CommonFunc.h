@@ -4,7 +4,7 @@
 #include <windows.h>
 #include <string>
 #include <vector>
-#include <stdio.h>
+
 #include <SDL.h>
 #include <SDL_image.h>
 #include <SDL_mixer.h>
@@ -13,6 +13,10 @@
 static SDL_Window* g_window = NULL;
 static SDL_Renderer* g_screen = NULL;
 static SDL_Event g_envent;
+
+static Mix_Chunk* g_sound_bullet[2];
+static Mix_Chunk* g_sound_exp[2];
+
 
 
 //Screen

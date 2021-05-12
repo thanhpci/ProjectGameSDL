@@ -29,7 +29,7 @@ public:
     };
     bool loadImg(std::string path, SDL_Renderer* screen);
     void Show(SDL_Renderer* des);
-    void HandelInputAction(SDL_Event events, SDL_Renderer* screen);
+    void HandelInputAction(SDL_Event events, SDL_Renderer* screen, Mix_Chunk* bullet_sound[2]);
     void set_clips();
     void DoPlayer(Map& map_data);
     void CheckToMap(Map& map_data);
@@ -47,6 +47,10 @@ public:
     void HandleBullet(SDL_Renderer* des);
     void RemoveBullet(const int& idx);
     void IncreaseMoney();
+    int get_frame_width() const {return width_frame_;}
+    int get_frame_height() const {return height_frame_;}
+    void set_comeback_time(const int& cb_time) {come_back_time_ = cb_time;}
+    int GetMoneyCount() const {return money_count;}
 
 private:
 

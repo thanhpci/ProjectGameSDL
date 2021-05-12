@@ -1,5 +1,5 @@
 # depslib dependency file v1.0
-1620570088 source:d:\codeblocks\gamesdl\main.cpp
+1620809861 source:d:\codeblocks\gamesdl\main.cpp
 	<iostream>
 	"CommonFunc.h"
 	"BaseObject.h"
@@ -7,15 +7,18 @@
 	"MainObject.h"
 	"ImpTimer.h"
 	"ThreatsObject.h"
+	"ExplosionObject.h"
+	"TextObject.h"
+	"PlayerPower.h"
+	"Geometric.h"
 
-1620497005 source:d:\codeblocks\gamesdl\commonfunc.cpp
+1620807162 source:d:\codeblocks\gamesdl\commonfunc.cpp
 	"CommonFunc.h"
 
-1620563239 d:\codeblocks\gamesdl\commonfunc.h
+1620807162 d:\codeblocks\gamesdl\commonfunc.h
 	<windows.h>
 	<string>
 	<vector>
-	<stdio.h>
 	<SDL.h>
 	<SDL_image.h>
 	<SDL_mixer.h>
@@ -34,13 +37,13 @@
 	"CommonFunc.h"
 	"BaseObject.h"
 
-1620555352 d:\codeblocks\gamesdl\mainobject.h
+1620802311 d:\codeblocks\gamesdl\mainobject.h
 	<vector>
 	"CommonFunc.h"
 	"BaseObject.h"
 	"BulletObject.h"
 
-1620570088 source:d:\codeblocks\gamesdl\mainobject.cpp
+1620802311 source:d:\codeblocks\gamesdl\mainobject.cpp
 	"MainObject.h"
 
 1619599774 source:d:\codeblocks\gamesdl\imptimer.cpp
@@ -49,18 +52,46 @@
 
 1619599732 d:\codeblocks\gamesdl\imptimer.h
 
-1620491658 source:d:\codeblocks\gamesdl\bulletobject.cpp
+1620575165 source:d:\codeblocks\gamesdl\bulletobject.cpp
 	"BulletObject.h"
 
 1620491624 d:\codeblocks\gamesdl\bulletobject.h
 	"BaseObject.h"
 	"CommonFunc.h"
 
-1620561820 source:d:\codeblocks\gamesdl\threatsobject.cpp
+1620754518 source:d:\codeblocks\gamesdl\threatsobject.cpp
 	"ThreatsObject.h"
 
 1620561672 d:\codeblocks\gamesdl\threatsobject.h
 	"CommonFunc.h"
 	"BaseObject.h"
 	"BulletObject.h"
+
+1620658452 source:d:\codeblocks\gamesdl\explosionobject.cpp
+	"ExplosionObject.h"
+
+1620583772 d:\codeblocks\gamesdl\explosionobject.h
+	"CommonFunc.h"
+	"BaseObject.h"
+
+1620734702 source:d:\codeblocks\gamesdl\textobject.cpp
+	"TextObject.h"
+
+1620742703 d:\codeblocks\gamesdl\textobject.h
+	"CommonFunc.h"
+
+1620755881 source:d:\codeblocks\gamesdl\playerpower.cpp
+	"PlayerPower.h"
+
+1620809406 d:\codeblocks\gamesdl\playerpower.h
+	"CommonFunc.h"
+	"BaseObject.h"
+
+1620798298 source:d:\codeblocks\gamesdl\geometric.cpp
+	"Geometric.h"
+
+1620798343 d:\codeblocks\gamesdl\geometric.h
+	"CommonFunc.h"
+
+1620807162 source:d:\codeblocks\gamesdl\menuobject.cpp
 
